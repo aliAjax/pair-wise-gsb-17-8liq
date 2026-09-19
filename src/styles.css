@@ -18,8 +18,37 @@ body {
 }
 
 button,
-input {
+input,
+select,
+textarea {
   font: inherit;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+select {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0 12px;
+  background: #ffffff;
+  color: #172033;
+}
+
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  resize: vertical;
+  color: #172033;
 }
 
 button {
@@ -260,6 +289,349 @@ input {
   line-height: 1.6;
 }
 
+/* ---------- 钻孔编录闭环 ---------- */
+
+.status-chip {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.chip-draft {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.chip-revising {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.chip-frozen {
+  background: #ccfbf1;
+  color: #0f766e;
+}
+
+.hole-list {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+  max-height: 420px;
+  overflow: auto;
+}
+
+.hole-item {
+  display: grid;
+  gap: 6px;
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fbfdff;
+  min-height: 0;
+}
+
+.hole-item.active {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.hole-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.hole-item span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.hole-item-head strong {
+  color: #172033;
+}
+
+.sidebar-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.filter-active {
+  border-color: var(--primary) !important;
+  background: color-mix(in srgb, var(--primary) 16%, #ffffff) !important;
+  font-weight: 700;
+}
+
+.editor {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+  min-width: 0;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.danger-btn {
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.hint {
+  color: #64748b;
+  font-size: 13px;
+  margin: 0;
+}
+
+.locked-banner {
+  background: #f0fdfa;
+  border: 1px solid #99f6e4;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #0f766e;
+  font-size: 14px;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.checklist > li {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.checklist > li.pass {
+  border-left: 4px solid var(--accent);
+}
+
+.checklist > li.fail {
+  border-left: 4px solid #e11d48;
+  background: #fff7f7;
+}
+
+.checklist ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: #b91c1c;
+  font-size: 13px;
+  display: grid;
+  gap: 4px;
+}
+
+.revision-form {
+  display: grid;
+  gap: 12px;
+  border-top: 1px dashed var(--border);
+  padding-top: 16px;
+}
+
+.layer-list {
+  display: grid;
+  gap: 14px;
+}
+
+.layer-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  background: #fbfdff;
+  display: grid;
+  gap: 14px;
+}
+
+.layer-card.layer-warn {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.layer-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.layer-head strong {
+  font-size: 15px;
+}
+
+.layer-head .toolbar {
+  margin-left: auto;
+}
+
+.layer-head .toolbar button {
+  min-height: 30px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.layer-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.layer-fields .wide {
+  grid-column: 1 / -1;
+}
+
+.badge {
+  font-style: normal;
+  font-size: 12px;
+  border-radius: 999px;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
+
+.badge-warn {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-ok {
+  background: #ccfbf1;
+  color: #0f766e;
+}
+
+.field-error select,
+.field-error input {
+  border-color: #e11d48;
+}
+
+.warn-text {
+  color: #b91c1c;
+  font-size: 12px;
+}
+
+.problems {
+  color: #b91c1c;
+  font-size: 13px;
+  display: grid;
+  gap: 4px;
+  margin: 0 0 12px;
+  padding-left: 18px;
+}
+
+.spt-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.spt-form .problems {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.spt-form-side {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.spt-list {
+  display: grid;
+  gap: 10px;
+}
+
+.spt-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #fbfdff;
+}
+
+.spt-row.spt-invalid {
+  border-color: #e11d48;
+  background: #fff7f7;
+}
+
+.spt-row .problems {
+  flex-basis: 100%;
+  margin-bottom: 0;
+}
+
+.spt-row button {
+  margin-left: auto;
+  min-height: 30px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.revision-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: #fbfdff;
+}
+
+.revision-item + .revision-item {
+  margin-top: 10px;
+}
+
+.revision-item header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.revision-reason {
+  margin-bottom: 8px;
+  color: #172033;
+}
+
+.snapshot {
+  margin-top: 10px;
+}
+
+.snapshot table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.snapshot th,
+.snapshot td {
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.snapshot th {
+  background: #f1f5f9;
+}
+
+details summary {
+  cursor: pointer;
+  color: var(--warn);
+  font-size: 13px;
+}
+
 @media (max-width: 860px) {
   .hero,
   .workspace,
@@ -267,7 +639,13 @@ input {
     grid-template-columns: 1fr;
   }
 
-  .field-grid {
+  .field-grid,
+  .layer-fields,
+  .spt-form {
     grid-template-columns: 1fr;
+  }
+
+  .spt-form-side {
+    justify-items: start;
   }
 }
